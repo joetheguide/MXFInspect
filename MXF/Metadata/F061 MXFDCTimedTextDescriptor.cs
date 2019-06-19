@@ -25,6 +25,9 @@ namespace Myriadbits.MXF
 {
 	public class MXFDCTimedTextDescriptor : MXFGenericDataEssenceDescriptor
 	{
+        [CategoryAttribute("DCTimedTextDescriptor"), ReadOnly(true)]
+        public MXFKey ResourceID { get; set; }
+
         /// <summary>
         /// Constructor, set the correct descriptor name
         /// </summary>

@@ -59,7 +59,8 @@ namespace Myriadbits.MXF
 			m_metaTypes.Add(0x51, "Descriptor: MPEG 2 Video");
 			m_metaTypes.Add(0x5C, "Descriptor: ANC Data Descriptor, SMPTE 436 - 7.3");
 			m_metaTypes.Add(0x25, "File Descriptor");
-		}
+            m_metaTypes.Add(0x64, "DC TimedText Descriptor");
+        }
 
 		/// <summary>
 		/// Constructor, set the correct descriptor name
