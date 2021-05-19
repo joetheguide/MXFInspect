@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +19,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 using System;
 using System.Collections.Generic;
@@ -55,25 +57,28 @@ namespace Myriadbits.MXF
 
 	public class MXFANCPacket : MXFObject
 	{
+		private const string CATEGORYNAME = "ANCPacket";
+
 		protected static Dictionary<UInt16, string> m_DIDDescription; 
 
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)] 
+		[Category(CATEGORYNAME)] 
 		public UInt16 LineNumber { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public MXFANCWrappingType WrappingType { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public MXFANCPayloadCoding PayloadSamplingCoding { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public UInt16 PayloadSampleCount { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public byte DID { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public byte SDID { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public byte Size { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
+        [TypeConverter(typeof(ByteArrayConverter))]
 		public byte[] Payload { get; set; }
-		[CategoryAttribute("ANC Packet"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public string ContentDescription { get; set; }
 
 		/// <summary>
@@ -116,10 +121,10 @@ namespace Myriadbits.MXF
 		public MXFANCPacket(MXFReader reader)
 			: base(reader)
 		{
-			this.LineNumber = reader.ReadW();
-			this.WrappingType = (MXFANCWrappingType) reader.ReadB();
-			this.PayloadSamplingCoding = (MXFANCPayloadCoding) reader.ReadB();
-			this.PayloadSampleCount = reader.ReadW();
+			this.LineNumber = reader.ReadUInt16();
+			this.WrappingType = (MXFANCWrappingType) reader.ReadByte();
+			this.PayloadSamplingCoding = (MXFANCPayloadCoding) reader.ReadByte();
+			this.PayloadSampleCount = reader.ReadUInt16();
 
 			this.Length = this.PayloadSampleCount;
 			if (this.PayloadSamplingCoding == MXFANCPayloadCoding.Coding_10_bit_luma_samples ||
@@ -130,8 +135,8 @@ namespace Myriadbits.MXF
 			}
 
 			// Skip 8 bytes (seems to be data but cannot find any meaning in the spec!)
-			UInt32 unknownData1 = reader.ReadD();
-			UInt32 unknownData2 = reader.ReadD();
+			UInt32 unknownData1 = reader.ReadUInt32();
+			UInt32 unknownData2 = reader.ReadUInt32();
 
 			// Length Alignment
 			this.Length = 4 * ((this.Length + 3) / 4);
@@ -139,9 +144,9 @@ namespace Myriadbits.MXF
 			if (this.Length > 3)
 			{
 				// Read the DID
-				this.DID = reader.ReadB();
-				this.SDID = reader.ReadB();
-				this.Size = reader.ReadB();
+				this.DID = reader.ReadByte();
+				this.SDID = reader.ReadByte();
+				this.Size = reader.ReadByte();
 
 				UInt16 combinedID = (UInt16)((((UInt16)this.DID) << 8) | this.SDID);
 				if (m_DIDDescription.ContainsKey(combinedID))
@@ -160,8 +165,7 @@ namespace Myriadbits.MXF
 						break;
 					default:
 						// Read the real payload without the did/sdid/size
-						this.Payload = new byte[this.Length - 3];
-						reader.Read(this.Payload, this.Length - 3);
+						this.Payload = reader.ReadArray(reader.ReadByte, (int)(this.Length - 3));
 						break;
 				}
 			}

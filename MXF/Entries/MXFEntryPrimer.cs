@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +19,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 using System;
 using System.ComponentModel;
@@ -26,18 +28,22 @@ namespace Myriadbits.MXF
 {
 	public class MXFEntryPrimer : MXFObject
 	{
-		[CategoryAttribute("PrimerEntry"), ReadOnly(true)]
+		private const string CATEGORYNAME = "PrimerEntry";
+
+		[Category(CATEGORYNAME)]
 		public UInt16 LocalTag { get; set; }
-		[CategoryAttribute("PrimerEntry"), ReadOnly(true)]
-		public MXFRefKey AliasUID { get; set; }
+		[Category(CATEGORYNAME)]
+		// TODO smpte specs request an AUID, but 
+		// probably a MXFKey = UL would make more sense here, so can we change this safely?
+		public MXFAUID AliasUID { get; set; }
 
 		public MXFEntryPrimer(MXFReader reader)
 			: base(reader)
 		{
 			this.Offset = reader.Position;
-			this.LocalTag = reader.ReadW();
-			this.AliasUID = new MXFRefKey(reader, 16, "AliasUID");
-			this.Length = 20; // Fixed length
+			this.LocalTag = reader.ReadUInt16();
+			this.AliasUID = new MXFAUID(reader, "AliasUID");
+			this.Length = 20; // Fixed length (16 bytes key + 4 bytes local tag)
 		}
 
 		/// <summary>
