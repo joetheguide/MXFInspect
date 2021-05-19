@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +19,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 using System;
 using System.ComponentModel;
@@ -26,11 +28,13 @@ namespace Myriadbits.MXF
 {
 	public class MXFEntryDelta : MXFObject
 	{
-		[CategoryAttribute("DeltaEntry"), ReadOnly(true)] 
+		private const string CATEGORYNAME = "DeltaEntry";
+
+		[Category(CATEGORYNAME)] 
 		public sbyte PosTableIndex { get; set; }
-		[CategoryAttribute("DeltaEntry"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public byte Slice { get; set; }
-		[CategoryAttribute("DeltaEntry"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public UInt32 ElementDelta { get; set; }
 
 		public MXFEntryDelta(MXFReader reader, UInt32 length)
@@ -39,9 +43,9 @@ namespace Myriadbits.MXF
 			this.m_eType = MXFObjectType.Index;
 
 			this.Length = length;
-			this.PosTableIndex = reader.ReadsB();
-			this.Slice = reader.ReadB();
-			this.ElementDelta = reader.ReadD();
+			this.PosTableIndex = reader.ReadSignedByte();
+			this.Slice = reader.ReadByte();
+			this.ElementDelta = reader.ReadUInt32();
 		}
 
 		/// <summary>

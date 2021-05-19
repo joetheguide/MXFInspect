@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +19,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 using System.ComponentModel;
 
@@ -25,9 +27,12 @@ namespace Myriadbits.MXF
 {
 	public class MXFCDPFuture : MXFObject
 	{
-		[CategoryAttribute("CDPFooter"), ReadOnly(true)]
+		private const string CATEGORYNAME = "CDPFuture";
+
+		[Category(CATEGORYNAME)]
 		public byte? SectionID { get; set; }
-		[CategoryAttribute("CDPFooter"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
+        [TypeConverter(typeof(ByteArrayConverter))]
 		public byte[] Data { get; set; }
 
 
@@ -35,9 +40,8 @@ namespace Myriadbits.MXF
 			: base(reader)
 		{
 			this.SectionID = sectionID;
-			this.Length = reader.ReadB();
-			this.Data = new byte[this.Length];
-			reader.Read(this.Data, this.Length);
+			this.Length = reader.ReadByte();
+			this.Data = reader.ReadArray(reader.ReadByte, (int)this.Length);
 		}
 
 		/// <summary>

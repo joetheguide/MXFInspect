@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +19,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 
 using System;
@@ -68,37 +70,48 @@ namespace Myriadbits.MXF
 
 	public class MXFSystemItem : MXFKLV
 	{
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		private const string CATEGORYNAME = "SystemItem";
+
+		[Category(CATEGORYNAME)]
 		public SystemBitmap SystemBitmap { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public double PackageRate { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public SystemStreamStatus StreamStatus { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public bool LowLatencyMode { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public SystemTransferMode TransferMode { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public SystemTimingMode TimingMode { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public UInt16 ChannelHandle { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public UInt16 ContinuityCount { get; set; }
 
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
-		public MXFRefKey SMPTE { get; set; }
+		[Category(CATEGORYNAME)]
+		public MXFKey SMPTE { get; set; }
 
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public string CreationDate { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public MXFTimeStamp UserDate { get; set; }
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		
+		[Category(CATEGORYNAME)]
 		public string UserDateFullFrameNb { get; set; }
 
 		[Browsable(false)]
 		public bool Indexed { get; set; }
 
-		[CategoryAttribute("SystemItem"), ReadOnly(true)]
+		[Category(CATEGORYNAME)]
 		public long EssenceOffset
 		{
 			get
@@ -119,10 +132,10 @@ namespace Myriadbits.MXF
 			reader.Seek(this.DataOffset); // Seek to the start of the data
 
 			// Parse system bitmap
-			this.SystemBitmap = (SystemBitmap)reader.ReadB();
+			this.SystemBitmap = (SystemBitmap)reader.ReadByte();
 
 			// Parse Content package rate
-			byte rate = reader.ReadB();
+			byte rate = reader.ReadByte();
 			int rateIndex = (rate & 0x1E) >> 1;
 			int[] rates = new int[16] {0, 24, 25, 30, 48, 50, 60, 72, 75, 90, 96, 100, 120, 0, 0, 0 };
 			int rateNonDrop = 1;
@@ -134,16 +147,16 @@ namespace Myriadbits.MXF
 
 
 			// Parse Content Package Type
-			byte type = reader.ReadB();
+			byte type = reader.ReadByte();
 			this.StreamStatus = (SystemStreamStatus)((type & 0xE0) >> 5);
 			this.LowLatencyMode = ((type & 0x10) == 0x10);
 			this.TransferMode = (SystemTransferMode)((type & 0x0C) >> 2);
 			this.TimingMode = (SystemTimingMode)(type & 0x03);
 
-			this.ChannelHandle = reader.ReadW();
-			this.ContinuityCount = reader.ReadW();
+			this.ChannelHandle = reader.ReadUInt16();
+			this.ContinuityCount = reader.ReadUInt16();
 
-			this.SMPTE = new MXFRefKey(reader, 16, "SMPTE"); // Always read even if zero
+			this.SMPTE = reader.ReadULKey(); // Always read even if zero
 
 			MXFTimeStamp creationTimeStamp = reader.ReadBCDTimeCode(this.PackageRate);
 			this.CreationDate = creationTimeStamp.ToString();

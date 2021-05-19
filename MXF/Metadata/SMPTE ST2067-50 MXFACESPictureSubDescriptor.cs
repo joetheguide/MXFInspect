@@ -1,4 +1,9 @@
+<<<<<<< HEAD:MXF/Metadata/SMPTE ST2067-50 MXFACESPictureSubDescriptor.cs
 ﻿//
+=======
+﻿#region license
+//
+>>>>>>> f648080fd25ab4e8cff46fc6497f5b00050113ea:MXF/Metadata/InterchangeObjects/Tracks/MXFStaticTrack.cs
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +23,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+<<<<<<< HEAD:MXF/Metadata/SMPTE ST2067-50 MXFACESPictureSubDescriptor.cs
 
 namespace Myriadbits.MXF
 {
@@ -26,6 +32,18 @@ namespace Myriadbits.MXF
 		public ACESPictureSubDescriptor(MXFReader reader, MXFKLV headerKLV)
 			: base(reader, headerKLV, "ACESPictureSubDescriptor")
 		{
+=======
+#endregion
+
+namespace Myriadbits.MXF
+{
+	public class MXFStaticTrack : MXFGenericTrack
+	{
+		public MXFStaticTrack(MXFReader reader, MXFKLV headerKLV)
+			: base(reader, headerKLV)
+		{
+			this.MetaDataName = "Static Track";
+>>>>>>> f648080fd25ab4e8cff46fc6497f5b00050113ea:MXF/Metadata/InterchangeObjects/Tracks/MXFStaticTrack.cs
 		}
 
 		/// <summary>
@@ -36,6 +54,9 @@ namespace Myriadbits.MXF
 		{
 			return base.ParseLocalTag(reader, localTag); 
 		}
+<<<<<<< HEAD:MXF/Metadata/SMPTE ST2067-50 MXFACESPictureSubDescriptor.cs
 
+=======
+>>>>>>> f648080fd25ab4e8cff46fc6497f5b00050113ea:MXF/Metadata/InterchangeObjects/Tracks/MXFStaticTrack.cs
 	}
 }

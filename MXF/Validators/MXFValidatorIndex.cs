@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,6 +19,7 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -354,8 +356,11 @@ namespace Myriadbits.MXF
 		{
 			// LOAD the object (when not yet loaded)
 			// This may take some time!!!
-			current.Load();
-
+			if(current is ILazyLoadable loadable)
+            {
+				loadable.Load();
+			}
+			
 			MXFKLV klv = current as MXFKLV;
 			if (klv != null)
 			{
@@ -388,7 +393,7 @@ namespace Myriadbits.MXF
 				}
 			}
 
-			if (current.Children == null)
+			if (!current.Children.Any())
 				return;
 
 			foreach(MXFObject child in current.Children)

@@ -1,4 +1,5 @@
-﻿//
+﻿#region license
+//
 // MXF - Myriadbits .NET MXF library. 
 // Read MXF Files.
 // Copyright (C) 2015 Myriadbits, Jochem Bakker
@@ -18,8 +19,10 @@
 //
 // For more information, contact me at: info@myriadbits.com
 //
+#endregion
 
 using System.ComponentModel;
+using System.Linq;
 
 namespace Myriadbits.MXF
 {
@@ -46,20 +49,20 @@ namespace Myriadbits.MXF
 		/// MXF Object constructor
 		/// </summary>
 		/// <param name="reader"></param>
-		public MXFNamedObject(string collectionName, long offset)
+		public MXFNamedObject(string name, long offset)
 			: base(offset)
 		{
-			this.Name = collectionName;
+			this.Name = name;
 		}
 
 		/// <summary>
 		/// MXF Object constructor
 		/// </summary>
 		/// <param name="reader"></param>
-		public MXFNamedObject(string collectionName, long offset, MXFObjectType type)
+		public MXFNamedObject(string name, long offset, MXFObjectType type)
 			: base(offset)
 		{
-			this.Name = collectionName;
+			this.Name = name;
 			this.m_eType = type;
 		}
 
@@ -67,10 +70,10 @@ namespace Myriadbits.MXF
 		/// MXF Object constructor
 		/// </summary>
 		/// <param name="reader"></param>
-		public MXFNamedObject(string collectionName, long offset, long length)
+		public MXFNamedObject(string name, long offset, long length)
 			: base(offset)
 		{
-			this.Name = collectionName;
+			this.Name = name;
 			this.Length = length;
 		}
 
@@ -80,7 +83,7 @@ namespace Myriadbits.MXF
 		/// <returns></returns>
 		public override string ToString()
 		{
-			if (this.Children == null)
+			if (!this.Children.Any())
 				return this.Name;
 			return string.Format("{0} [{1} items]", this.Name, this.Children.Count);
 		}
