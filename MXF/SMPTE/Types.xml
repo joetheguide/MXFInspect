@@ -6,7 +6,7 @@
 <!-- ************************************* -->
 <!-- ************************************* -->
 <!--  -->
-<!-- DRAFT REGISTER -->
+<!-- REGISTER WITH A SUBMISSION APPLIED FOR ANALYSIS PURPOSES -->
 <!--  -->
 <!-- SMPTE METADATA REGISTER -->
 <!-- ####################### -->
@@ -2749,6 +2749,39 @@
     <Entry>
       <Register>Types</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
+      <Symbol>HEVCCodedContentType</Symbol>
+      <UL>urn:smpte:ul:060e2b34.01040101.02010133.00000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>HEVCCodedContentType</Name>
+      <DefiningDocument>SMPTE ST 381-5</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <TypeKind>Enumeration</TypeKind>
+      <BaseType>urn:smpte:ul:060e2b34.01040101.01010100.00000000</BaseType>
+      <Facets>
+        <Facet>
+          <Symbol>HEVCCodedContent_NotKnown</Symbol>
+          <Name>HEVCCodedContent_NotKnown</Name>
+          <Value>0</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Symbol>HEVCCodedContent_ProgressiveFramePicture</Symbol>
+          <Name>HEVCCodedContent_ProgressiveFramePicture</Name>
+          <Value>1</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Symbol>HEVCCodedContent_InterlacedFieldPicture</Symbol>
+          <Name>HEVCCodedContent_InterlacedFieldPicture</Name>
+          <Value>2</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+      </Facets>
+    </Entry>
+    <Entry>
+      <Register>Types</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
       <Symbol>EnumeratedUInt16Types</Symbol>
       <UL>urn:smpte:ul:060e2b34.01040101.02010200.00000000</UL>
       <Kind>NODE</Kind>
@@ -2949,6 +2982,22 @@
           <Value>urn:smpte:ul:060e2b34.0401010d.04010101.010d0000</Value>
           <IsDeprecated>false</IsDeprecated>
         </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.010e0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.010f0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.01100000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.01110000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
       </Facets>
     </Entry>
     <Entry>
@@ -3071,6 +3120,30 @@
           <Value>urn:smpte:ul:060e2b34.0401010d.04010101.03080000</Value>
           <IsDeprecated>false</IsDeprecated>
         </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.03090000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.030a0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.030b0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.030c0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.030d0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.030e0000</Value>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
       </Facets>
     </Entry>
     <Entry>
@@ -3112,6 +3185,10 @@
         <Facet>
           <Value>urn:smpte:ul:060e2b34.0401010d.04010101.02060000</Value>
           <Applications>AAF[1.1:]</Applications>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Value>urn:smpte:ul:060e2b34.0401010d.04010101.02070000</Value>
           <IsDeprecated>false</IsDeprecated>
         </Facet>
       </Facets>
@@ -3683,6 +3760,32 @@
     <Entry>
       <Register>Types</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
+      <Symbol>J2KExtendedCapabilities</Symbol>
+      <UL>urn:smpte:ul:060e2b34.01040101.03010d00.00000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>JPEG 2000 Extended Capabilities</Name>
+      <DefiningDocument>SMPTE ST 422</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <TypeKind>Record</TypeKind>
+      <Facets>
+        <Facet>
+          <Symbol>Pcap</Symbol>
+          <Name>Pcap</Name>
+          <Type>urn:smpte:ul:060e2b34.01040101.01010300.00000000</Type>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+        <Facet>
+          <Symbol>Ccapi</Symbol>
+          <Name>Ccapi</Name>
+          <Type>urn:smpte:ul:060e2b34.01040101.04011200.00000000</Type>
+          <IsDeprecated>false</IsDeprecated>
+        </Facet>
+      </Facets>
+    </Entry>
+    <Entry>
+      <Register>Types</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
       <Symbol>Multiples</Symbol>
       <UL>urn:smpte:ul:060e2b34.01040101.04000000.00000000</UL>
       <Kind>NODE</Kind>
@@ -4204,6 +4307,21 @@
     <Entry>
       <Register>Types</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
+      <Symbol>UTF16StringBatch</Symbol>
+      <UL>urn:smpte:ul:060e2b34.01040101.04030800.00000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>UTF16StringBatch</Name>
+      <DefiningDocument>SMPTE ST 2127-10</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <TypeKind>Set</TypeKind>
+      <TypeSize>0</TypeSize>
+      <BaseType>urn:smpte:ul:060e2b34.01040101.01100100.00000000</BaseType>
+      <TypeQualifiers>isIdentified</TypeQualifiers>
+    </Entry>
+    <Entry>
+      <Register>Types</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
       <Symbol>BytestreamTypes</Symbol>
       <UL>urn:smpte:ul:060e2b34.01040101.04100000.00000000</UL>
       <Kind>NODE</Kind>
@@ -4322,6 +4440,19 @@
       <DefiningDocument>SMPTE ST 377-1</DefiningDocument>
       <IsDeprecated>false</IsDeprecated>
       <ContextScope>UnknownContext</ContextScope>
+      <TypeKind>Rename</TypeKind>
+      <BaseType>urn:smpte:ul:060e2b34.01040101.04100100.00000000</BaseType>
+    </Entry>
+    <Entry>
+      <Register>Types</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
+      <Symbol>ST2109PayloadSeries</Symbol>
+      <UL>urn:smpte:ul:060e2b34.01040101.04100b00.00000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>ST 2109 Payload Series</Name>
+      <DefiningDocument>SMPTE ST 2109</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>DefinedContext</ContextScope>
       <TypeKind>Rename</TypeKind>
       <BaseType>urn:smpte:ul:060e2b34.01040101.04100100.00000000</BaseType>
     </Entry>
@@ -10515,6 +10646,16 @@
       <Kind>NODE</Kind>
       <Name>Apple Inc.</Name>
       <Definition>Metadata registered by Apple Inc. for private use</Definition>
+      <IsDeprecated>false</IsDeprecated>
+    </Entry>
+    <Entry>
+      <Register>Types</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/2003/2012/14/33</NamespaceName>
+      <Symbol>Fraunhofer</Symbol>
+      <UL>urn:smpte:ul:060e2b34.01040101.0e210000.00000000</UL>
+      <Kind>NODE</Kind>
+      <Name>Fraunhofer</Name>
+      <Definition>Metadata registered by Fraunhofer for private use</Definition>
       <IsDeprecated>false</IsDeprecated>
     </Entry>
     <Entry>
