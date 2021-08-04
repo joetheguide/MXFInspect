@@ -41,6 +41,7 @@ namespace Myriadbits.MXF
         private MXFKey MCALinkID_Key;
         private MXFKey MCATagSymbol_Key;
         private MXFKey MCATagName_Key;
+        private MXFKey RFC5646SpokenLanguage_Key;
 
         [SortedCategory(CATEGORYNAME, CATEGORYPOS)]
         public MXFKey MCALabelDictionaryID { get; set; }
@@ -54,6 +55,8 @@ namespace Myriadbits.MXF
         [SortedCategory(CATEGORYNAME, CATEGORYPOS)]
         public string? MCATagName { get; set; }
 
+        [SortedCategory(CATEGORYNAME, CATEGORYPOS)]
+        public string? RFC5646SpokenLanguage { get; set; }
 
         public MXFMCALabelSubDescriptor(MXFReader reader, MXFKLV headerKLV)
             : base(reader, headerKLV, "MCA Label SubDescriptor")
@@ -78,6 +81,9 @@ namespace Myriadbits.MXF
                 MCATagSymbol_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
             if (knownSymbols.TryGetValue("MCATagName", out ul_key))
                 MCATagName_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
+            if (knownSymbols.TryGetValue("RFC5646SpokenLanguage", out ul_key))
+                RFC5646SpokenLanguage_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
+            
             ParamsInitiated = true;
         }
 
@@ -96,6 +102,8 @@ namespace Myriadbits.MXF
                     case var _ when localTag.Key == MCALinkID_Key: this.MCALinkID = reader.ReadUUIDKey(); return true;
                     case var _ when localTag.Key == MCATagSymbol_Key: this.MCATagSymbol = reader.ReadUTF16String(localTag.Size); return true;
                     case var _ when localTag.Key == MCATagName_Key: this.MCATagName = reader.ReadUTF16String(localTag.Size); return true;
+                    case var _ when localTag.Key == RFC5646SpokenLanguage_Key: this.RFC5646SpokenLanguage = reader.ReadUTF8String(localTag.Size); return true;
+                        
                 }
             }
             return base.ParseLocalTag(reader, localTag);
