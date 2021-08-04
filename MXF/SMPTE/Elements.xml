@@ -15315,18 +15315,72 @@
     <Entry>
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
-      <Symbol>MGAAudioMetadataCodingParameters</Symbol>
+      <Symbol>MGASoundEssenceCodingParameters</Symbol>
       <UL>urn:smpte:ul:060e2b34.0101010e.04020304.00000000</UL>
+      <Kind>NODE</Kind>
+      <Name>MGA Sound Essence Coding Parameters</Name>
+      <Definition>Parameters about MGA Sound Essence Coding</Definition>
+      <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MGASoundEssenceBlockAlign</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.01000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MGA Sound Essence Block Align</Name>
+      <Definition>Specifies the block alignment of the data in Bytes</Definition>
+      <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01010200.00000000</Type>
+      <ValueLength>2 byte</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MGASoundEssenceAverageBytesPerSecond</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.02000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MGA Sound Essence Average Bytes Per Second</Name>
+      <Definition>Specifies the average data rate in Bytes per Second</Definition>
+      <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01010300.00000000</Type>
+      <ValueLength>4 byte</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MGASoundEssenceSequenceOffset</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.03000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MGA Sound Essence Sequence Offset</Name>
+      <Definition>Specifies the Sequence Offset</Definition>
+      <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01010100.00000000</Type>
+      <ValueLength>1 byte</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MGAAudioMetadataCodingParameters</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.00000000</UL>
       <Kind>NODE</Kind>
       <Name>MGA Audio Metadata Coding Parameters</Name>
       <Definition>Parameters about MGA Audio Metadata Coding</Definition>
+      <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
       <IsDeprecated>false</IsDeprecated>
     </Entry>
     <Entry>
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>MGALinkID</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.01000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.01000000</UL>
       <Kind>LEAF</Kind>
       <Name>MGA Link ID</Name>
       <Definition>Specifies the MGA Link ID</Definition>
@@ -15340,7 +15394,7 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>MGAAudioMetadataIndex</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.02000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.02000000</UL>
       <Kind>LEAF</Kind>
       <Name>MGA Audio Metadata Index</Name>
       <Definition>Specifies the MGA Audio Metadata Index</Definition>
@@ -15354,7 +15408,7 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>MGAAudioMetadataIdentifier</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.03000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.03000000</UL>
       <Kind>LEAF</Kind>
       <Name>MGA Audio Metadata Identifier</Name>
       <Definition>Specifies the MGA Audio Metadata Identifier</Definition>
@@ -15368,7 +15422,7 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>MGAAudioMetadataPayloadULArray</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020304.04000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.04000000</UL>
       <Kind>LEAF</Kind>
       <Name>MGA Audio Metadata Payload UL Array</Name>
       <Definition>Specifies an Array of MGA Audio Metadata Payload ULs</Definition>
@@ -15382,17 +15436,18 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>MGASoundfieldGroupLabelCodingParameters</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.00000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.00000000</UL>
       <Kind>NODE</Kind>
       <Name>MGA Soundfield Group Label Coding Parameters</Name>
       <Definition>Parameters about MGA Soundfield Group Label Coding</Definition>
+      <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
       <IsDeprecated>false</IsDeprecated>
     </Entry>
     <Entry>
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>MGAMetadataSectionLinkID</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.01000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.01000000</UL>
       <Kind>LEAF</Kind>
       <Name>MGA Metadata Section Link ID</Name>
       <Definition>Specifies the MGA Metadata Section Link ID</Definition>
@@ -15406,7 +15461,7 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>ADMAudioProgrammeID</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.02000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.02000000</UL>
       <Kind>LEAF</Kind>
       <Name>ADM Audio Programme ID</Name>
       <Definition>Specifies the ADM Audio Programme ID</Definition>
@@ -15420,7 +15475,7 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>ADMAudioContentID</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.03000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.03000000</UL>
       <Kind>LEAF</Kind>
       <Name>ADM Audio Content ID</Name>
       <Definition>Specifies the ADM Audio Content ID</Definition>
@@ -15434,7 +15489,7 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>ADMAudioObjectID</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020305.04000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.04000000</UL>
       <Kind>LEAF</Kind>
       <Name>ADM Audio Object ID</Name>
       <Definition>Specifies the ADM Audio Object ID</Definition>
@@ -15448,24 +15503,39 @@
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>SADMAudioMetadataCodingParameters</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.00000000</UL>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020307.00000000</UL>
       <Kind>NODE</Kind>
       <Name>S-ADM Audio Metadata Coding Parameters</Name>
       <Definition>Parameters about S-ADM Audio Metadata Coding</Definition>
+      <DefiningDocument>SMPTE ST 2127-10</DefiningDocument>
       <IsDeprecated>false</IsDeprecated>
     </Entry>
     <Entry>
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
-      <Symbol>SADMProfileLevelBatch</Symbol>
-      <UL>urn:smpte:ul:060e2b34.0101010e.04020306.01000000</UL>
+      <Symbol>SADMMetadataSectionLinkID</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020307.01000000</UL>
       <Kind>LEAF</Kind>
-      <Name>S-ADM Profile Level Batch</Name>
-      <Definition>Batch of S-ADM Profile and Level entries</Definition>
+      <Name>S-ADM Metadata Section Link ID</Name>
+      <Definition>Specifies the S-ADM Metadata Section Link ID</Definition>
       <DefiningDocument>SMPTE ST 2127-10</DefiningDocument>
       <IsDeprecated>false</IsDeprecated>
       <ContextScope>UnknownContext</ContextScope>
-      <Type>urn:smpte:ul:060e2b34.01040101.04030800.00000000</Type>
+      <Type>urn:smpte:ul:060e2b34.01040101.01030300.00000000</Type>
+      <ValueLength>16 byte</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>SADMProfileLevelULBatch</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.04020307.02000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>S-ADM Profile Level UL Batch</Name>
+      <Definition>Batch of S-ADM Profile and Level UL entries</Definition>
+      <DefiningDocument>SMPTE ST 2127-10</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.04030100.00000000</Type>
       <ValueLength>Variable</ValueLength>
     </Entry>
     <Entry>

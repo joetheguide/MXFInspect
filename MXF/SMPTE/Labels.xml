@@ -39399,7 +39399,7 @@
       <Symbol>MXFGCMGAAudioMappings</Symbol>
       <UL>urn:smpte:ul:060e2b34.0401010d.0d010301.02250000</UL>
       <Kind>NODE</Kind>
-      <Name>MXF GC MGA Audio Mappings</Name>
+      <Name>MXF-GC MGA Audio Mappings</Name>
       <Definition>Identifies MXF GC MGA Audio Mappings</Definition>
       <DefiningDocument>SMPTE ST 2127-1</DefiningDocument>
       <IsDeprecated>false</IsDeprecated>

@@ -4307,21 +4307,6 @@
     <Entry>
       <Register>Types</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
-      <Symbol>UTF16StringBatch</Symbol>
-      <UL>urn:smpte:ul:060e2b34.01040101.04030800.00000000</UL>
-      <Kind>LEAF</Kind>
-      <Name>UTF16StringBatch</Name>
-      <DefiningDocument>SMPTE ST 2127-10</DefiningDocument>
-      <IsDeprecated>false</IsDeprecated>
-      <ContextScope>UnknownContext</ContextScope>
-      <TypeKind>Set</TypeKind>
-      <TypeSize>0</TypeSize>
-      <BaseType>urn:smpte:ul:060e2b34.01040101.01100100.00000000</BaseType>
-      <TypeQualifiers>isIdentified</TypeQualifiers>
-    </Entry>
-    <Entry>
-      <Register>Types</Register>
-      <NamespaceName>http://www.smpte-ra.org/reg/2003/2012</NamespaceName>
       <Symbol>BytestreamTypes</Symbol>
       <UL>urn:smpte:ul:060e2b34.01040101.04100000.00000000</UL>
       <Kind>NODE</Kind>

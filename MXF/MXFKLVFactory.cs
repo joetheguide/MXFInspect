@@ -29,6 +29,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace Myriadbits.MXF
 {
@@ -42,9 +43,12 @@ namespace Myriadbits.MXF
 
         static readonly Dictionary<MXFShortKey, KeyDescription> knownKeys = KeyDictionary.GetKeys();
 
+        static readonly Dictionary<string, MXFShortKey> knownSymbols = SymbolDictionary.GetKeys();
+
         static MXFKLVFactory()
         {
             #region Main Elements
+            MXFShortKey ul_key;
 
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x05, 0x01, 0x01, 0x0d, 0x01, 0x02, 0x01, 0x01, 0x02), typeof(MXFPartition));                 // Header partition
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x05, 0x01, 0x01, 0x0d, 0x01, 0x02, 0x01, 0x01, 0x03), typeof(MXFPartition));                 // Body partition
@@ -151,7 +155,10 @@ namespace Myriadbits.MXF
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x42, 0x00), typeof(MXFGenericSoundEssenceDescriptor));
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x43, 0x00), typeof(MXFGenericDataEssenceDescriptor));
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x44, 0x00), typeof(MXFMultipleDescriptor));
-
+            if (knownSymbols.TryGetValue("MGASoundEssenceDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundEssenceDescriptor));
+            if (knownSymbols.TryGetValue("MGAAudioMetadataSubDescriptor", out  ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGAAudioMetadataSubDescriptor));
+            if (knownSymbols.TryGetValue("MGASoundfieldGroupLabelSubDescriptor", out  ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundfieldGroupLabelSubDescriptor));
+            if (knownSymbols.TryGetValue("SADMAudioMetadataSubDescriptor", out  ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFSADMAudioMetadataSubDescriptor));
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x31, 0x00), typeof(MXFLocator)); // Locator
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x32, 0x00), typeof(MXFNetworkLocator)); // Network Locator
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x33, 0x00), typeof(MXFTextLocator)); // Text Locator
