@@ -155,10 +155,6 @@ namespace Myriadbits.MXF
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x42, 0x00), typeof(MXFGenericSoundEssenceDescriptor));
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x43, 0x00), typeof(MXFGenericDataEssenceDescriptor));
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x44, 0x00), typeof(MXFMultipleDescriptor));
-            if (knownSymbols.TryGetValue("MGASoundEssenceDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundEssenceDescriptor));
-            if (knownSymbols.TryGetValue("MGAAudioMetadataSubDescriptor", out  ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGAAudioMetadataSubDescriptor));
-            if (knownSymbols.TryGetValue("MGASoundfieldGroupLabelSubDescriptor", out  ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundfieldGroupLabelSubDescriptor));
-            if (knownSymbols.TryGetValue("SADMAudioMetadataSubDescriptor", out  ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFSADMAudioMetadataSubDescriptor));
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x31, 0x00), typeof(MXFLocator)); // Locator
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x32, 0x00), typeof(MXFNetworkLocator)); // Network Locator
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x33, 0x00), typeof(MXFTextLocator)); // Text Locator
@@ -191,6 +187,17 @@ namespace Myriadbits.MXF
             // urn:smpte:ul:060e2b34.027f0101.0d010101.01015a00
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x5a, 0x00), typeof(MXFJPEG2000SubDescriptor));
 
+            // ST 2067-201 IAB
+            if (knownSymbols.TryGetValue("IABEssenceDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFIABEssenceDescriptor));
+            if (knownSymbols.TryGetValue("IABSoundfieldLabelSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFIABSoundfieldLabelSubDescriptor));
+
+            //ST 2127-1 MGA in MXF
+            if (knownSymbols.TryGetValue("MGASoundEssenceDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundEssenceDescriptor));
+            if (knownSymbols.TryGetValue("MGAAudioMetadataSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGAAudioMetadataSubDescriptor));
+            if (knownSymbols.TryGetValue("MGASoundfieldGroupLabelSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundfieldGroupLabelSubDescriptor));
+
+            //ST 2127-10 S-ADM in MXF
+            if (knownSymbols.TryGetValue("SADMAudioMetadataSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFSADMAudioMetadataSubDescriptor));
 
             dict.Add(new MXFKey(0x06, 0x0e, 0x2b, 0x34, 0x02, 0x53, 0x01, 0x01, 0x0d, 0x01, 0x01, 0x01, 0x01, 0x01, 0x59, 0x00), typeof(MXFSubDescriptor));
 
