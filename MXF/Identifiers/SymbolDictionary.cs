@@ -68,9 +68,6 @@ namespace Myriadbits.MXF.Identifiers
                 {
                     if (!dict.ContainsKey(entry.Value.Key)) dict.Add(entry.Value);
                 }
-                int xxx;
-                if (entry.Value.Key.Equals("HEVCSubDescriptor")) 
-                    xxx = 9;
             }
         }
 

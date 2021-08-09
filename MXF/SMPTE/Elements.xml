@@ -9527,6 +9527,104 @@
     <Entry>
       <Register>Elements</Register>
       <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MCAContent</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.22000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MCA Content</Name>
+      <Definition>Unique value that identifies the content contained in the audio essence</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100200.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MCAUseClass</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.23000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MCA Use Class</Name>
+      <Definition>Unique value that identifies the class of the audio essence with respect to its completeness and usability</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100200.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MCAContentSubtype</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.24000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MCA Content Subtype</Name>
+      <Definition>Supplemental modifier to MCA Content</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100200.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MCAContentDifferentiator</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.25000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MCA Content Differentiator</Name>
+      <Definition>Label that distinguishes between audio that otherwise has the same MCALabelSubDescriptor values</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100200.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MCASpokenLanguageAttribute</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.26000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MCA Spoken Language Attribute</Name>
+      <Definition>Depiction of whether the RFC 5646 Spoken Language is the original language or a dubbed language</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100400.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>RFC5646AdditionalSpokenLanguages</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.27000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>RFC 5646 Additional Spoken Languages</Name>
+      <Definition>List of RFC 5646 Spoken Language tags depicting spoken languages in addition to the primary spoken language</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100400.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
+      <Symbol>MCAAdditionalLanguageAttributes</Symbol>
+      <UL>urn:smpte:ul:060e2b34.0101010e.03020102.28000000</UL>
+      <Kind>LEAF</Kind>
+      <Name>MCA Additional Language Attributes</Name>
+      <Definition>Indication of whether each RFC 5646 language tag in RFC 5646 Additional Spoken Languages references original audio or dubbed audio</Definition>
+      <DefiningDocument>SMPTE ST 377-4</DefiningDocument>
+      <IsDeprecated>false</IsDeprecated>
+      <ContextScope>UnknownContext</ContextScope>
+      <Type>urn:smpte:ul:060e2b34.01040101.01100400.00000000</Type>
+      <ValueLength>Variable</ValueLength>
+    </Entry>
+    <Entry>
+      <Register>Elements</Register>
+      <NamespaceName>http://www.smpte-ra.org/reg/335/2012</NamespaceName>
       <Symbol>TextualDescription</Symbol>
       <UL>urn:smpte:ul:060e2b34.01010101.03020106.00000000</UL>
       <Kind>NODE</Kind>
