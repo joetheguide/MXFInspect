@@ -192,7 +192,7 @@ namespace Myriadbits.MXF
             if (knownSymbols.TryGetValue("IABSoundfieldLabelSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFIABSoundfieldLabelSubDescriptor));
 
             // ST 2124 JPEG XS in MXF
-            if (knownSymbols.TryGetValue("JPEGXSPictureSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFJPEGXSPictureSubDescriptor));
+            if (knownSymbols.TryGetValue("JPEGXSSubDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFJPEGXSSubDescriptor));
 
             //ST 2127-1 MGA in MXF
             if (knownSymbols.TryGetValue("MGASoundEssenceDescriptor", out ul_key)) dict.Add(new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key, true)), typeof(MXFMGASoundEssenceDescriptor));

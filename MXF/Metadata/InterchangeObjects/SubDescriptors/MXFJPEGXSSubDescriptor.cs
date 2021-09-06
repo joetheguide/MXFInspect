@@ -28,9 +28,9 @@ using Myriadbits.MXF.Identifiers;
 
 namespace Myriadbits.MXF
 {
-    public class MXFJPEGXSPictureSubDescriptor : MXFSubDescriptor
+    public class MXFJPEGXSSubDescriptor : MXFSubDescriptor
     {
-        private const string CATEGORYNAME = "JPEGXSPictureSubDescriptor";
+        private const string CATEGORYNAME = "JPEGXSSubDescriptor";
         static readonly Dictionary<string, MXFShortKey> knownSymbols = SymbolDictionary.GetKeys();
         private bool ParamsInitiated = false;
         private MXFShortKey ul_key;
@@ -43,7 +43,7 @@ namespace Myriadbits.MXF
         private MXFKey JPEGXSComponentTable_Key;
         private MXFKey JPEGXSCw_Key;
         private MXFKey JPEGXSHsl_Key;
-        private MXFKey JPEGXSMaximumBitRate_Key;
+        private MXFKey JPEGXSMaximumBitrate_Key;
 
         [Category(CATEGORYNAME)]
         public UInt16 JPEGXSPpih { get; set; }
@@ -70,9 +70,9 @@ namespace Myriadbits.MXF
         public UInt16? JPEGXSHsl { get; set; }
 
         [Category(CATEGORYNAME)]
-        public UInt32? JPEGXSMaximumBitRate { get; set; }
+        public UInt32? JPEGXSMaximumBitrate { get; set; }
 
-        public MXFJPEGXSPictureSubDescriptor(MXFReader reader, MXFKLV headerKLV)
+        public MXFJPEGXSSubDescriptor(MXFReader reader, MXFKLV headerKLV)
             : base(reader, headerKLV, "JPEG XS Picture SubDescriptor")
         {
         }
@@ -82,7 +82,7 @@ namespace Myriadbits.MXF
         /// </summary>
         private void InitParms()
         {
-            if (knownSymbols.TryGetValue("JPEGXSPpih_Key", out ul_key))
+            if (knownSymbols.TryGetValue("JPEGXSPpih", out ul_key))
                 JPEGXSPpih_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
             if (knownSymbols.TryGetValue("JPEGXSPlev", out ul_key))
                 JPEGXSPlev_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
@@ -98,8 +98,8 @@ namespace Myriadbits.MXF
                 JPEGXSCw_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
             if (knownSymbols.TryGetValue("JPEGXSHsl", out ul_key))
                 JPEGXSHsl_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
-            if (knownSymbols.TryGetValue("JPEGXSMaximumBitRate", out ul_key))
-                JPEGXSMaximumBitRate_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
+            if (knownSymbols.TryGetValue("JPEGXSMaximumBitrate", out ul_key))
+                JPEGXSMaximumBitrate_Key = new MXFKey(MXFKey.MXFShortKeytoByteArray(ul_key));
             ParamsInitiated = true;
         }
 
@@ -122,7 +122,7 @@ namespace Myriadbits.MXF
                     case var _ when localTag.Key == JPEGXSComponentTable_Key : this.JPEGXSComponentTable = reader.ReadArray<byte>(reader.ReadByte, localTag.Size); return true;
                     case var _ when localTag.Key == JPEGXSCw_Key : this.JPEGXSCw = reader.ReadUInt16(); return true;
                     case var _ when localTag.Key == JPEGXSHsl_Key : this.JPEGXSHsl = reader.ReadUInt16(); return true;
-                    case var _ when localTag.Key == JPEGXSMaximumBitRate_Key : this.JPEGXSMaximumBitRate = reader.ReadUInt32(); return true;
+                    case var _ when localTag.Key == JPEGXSMaximumBitrate_Key : this.JPEGXSMaximumBitrate = reader.ReadUInt32(); return true;
                 }
             }
             return base.ParseLocalTag(reader, localTag);
