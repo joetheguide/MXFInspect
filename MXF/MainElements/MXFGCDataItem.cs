@@ -26,26 +26,35 @@ using System.Collections.Generic;
 
 namespace Myriadbits.MXF
 {	
-	public class MXFANCFrameElement : MXFEssenceElement
+	public class MXFGCDataItem : MXFEssenceElement
 	{
 		private static Dictionary<int, string> m_itemTypes = new Dictionary<int, string>();
 
-		public MXFANCFrameElement(MXFReader reader, MXFKLV headerKLV)
+		public MXFGCDataItem(MXFReader reader, MXFKLV headerKLV)
 			: base(reader, headerKLV)
 		{
-			UInt16 nofPackets = reader.ReadUInt16();
-			for(int n = 0; n < nofPackets; n++)
-			{
-				MXFANCPacket newpacket = new MXFANCPacket(reader);
-				this.AddChild(newpacket);
+			long nofPackets = headerKLV.Length;
+			switch (headerKLV.Key[14])
+            {
+				case 0x0b: //TimedTextDataElement
+					this.AddChild(new MXFTimedTextDataElement(reader, headerKLV.Length));
+					break;
+				default:
+					for (int n = 0; n < nofPackets; n++)
+					{
+						MXFANCPacket newpacket = new MXFANCPacket(reader);
+						this.AddChild(newpacket);
+					}
+					break;
 			}
+
 		}
-		
+
 		public override string ToString()
 		{
 			if (this.Children != null)
-				return string.Format("ANC Frame Element [packets {0}]", this.Children.Count);
-			return string.Format("ANC Frame Element [packets 0]");
+				return string.Format("Generic Container Data Item [packets {0}]", this.Children.Count);
+			return string.Format("Generic Container Data Item [packets 0]");
 		}
 	}
 }
