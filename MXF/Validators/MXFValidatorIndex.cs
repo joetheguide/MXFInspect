@@ -33,6 +33,9 @@ namespace Myriadbits.MXF
 		private List<MXFIndexTableSegment> m_indexTables = new List<MXFIndexTableSegment>();
 		private List<MXFSystemItem> m_systemItems = new List<MXFSystemItem>();
 		private List<MXFEssenceElement> m_pictureItems = new List<MXFEssenceElement>();
+		private List<MXFEssenceElement> m_soundItems = new List<MXFEssenceElement>();
+		private List<MXFEssenceElement> m_dataItems = new List<MXFEssenceElement>();
+	
 
 		/// <summary>
 		/// Check all index tables
@@ -45,6 +48,8 @@ namespace Myriadbits.MXF
 			results.Add(valResult); // And directly add the results
 			
 			Stopwatch sw = Stopwatch.StartNew();
+
+			bool clipWrappedSound = false;
 
 			// Clear list
 			m_indexTables = new List<MXFIndexTableSegment>();
@@ -220,6 +225,99 @@ namespace Myriadbits.MXF
 					}
 				}
 			}
+			else if (m_soundItems.Count != 0)
+			{
+				// Now try to match the picture essences
+
+				// For each index table segment				
+				counter = 0;
+				totalSystemItems = m_soundItems.Count();
+				this.Task = "Checking sound offsets";
+				foreach (MXFIndexTableSegment ids in this.m_indexTables)
+				{
+					ReportProgress(75 + (counter * 20) / this.m_indexTables.Count());
+
+					// And all index entries
+					if (ids.IndexEntries != null)
+					{
+						foreach (MXFEntryIndex index in ids.IndexEntries)
+						{
+							long searchIndex = (long)(index.StreamOffset);
+							//Hack, only "true" for MGA (0x0F) and IAB (0x0D) Clip Wrapping
+							if ((this.m_soundItems.Count == 1) &&  new []{ 0x0D, 0x0F }.Contains(this.m_soundItems.First().ElementType))
+							{
+								clipWrappedSound = true;
+								MXFEssenceElement ee = this.m_soundItems.First();
+								if (searchIndex < ee.Length)
+								{
+									validCt++;
+									ee.Indexed = true;
+								}
+								else
+								{
+									// Not found
+									valResult.AddError(string.Format("Index {0} not pointing to a valid sound essence!", index.Index));
+									invalidCt++;
+								}
+							}
+							else
+							{
+								// Check if there is a sound item at this offset
+								MXFEssenceElement ee = this.m_soundItems.Where(a => a.EssenceOffset == searchIndex).FirstOrDefault();
+								if (ee != null)
+								{
+									// Yes, found
+									validCt++;
+									ee.Indexed = true;
+								}
+								else
+								{
+									// Not found
+									valResult.AddError(string.Format("Index {0} not pointing to a valid sound essence!", index.Index));
+									invalidCt++;
+								}
+							}
+						}
+					}
+				}
+			}
+			// Thef Validation of Data Essences does not yet work, so for Data Essences there is still an error produced!
+			else if (m_dataItems.Count != 0)
+			{
+				// Now try to match the data essences
+
+				// For each index table segment				
+				counter = 0;
+				totalSystemItems = m_dataItems.Count();
+				this.Task = "Checking data offsets";
+				foreach (MXFIndexTableSegment ids in this.m_indexTables)
+				{
+					ReportProgress(75 + (counter * 20) / this.m_indexTables.Count());
+
+					// And all index entries
+					if (ids.IndexEntries != null)
+					{
+						foreach (MXFEntryIndex index in ids.IndexEntries)
+						{
+							// Check if there is a data item at this offset
+							long searchIndex = (long)(index.StreamOffset);
+							MXFEssenceElement ee = this.m_dataItems.Where(a => a.EssenceOffset == searchIndex).FirstOrDefault();
+							if (ee != null)
+							{
+								// Yes, found
+								validCt++;
+								ee.Indexed = true;
+							}
+							else
+							{
+								// Not found
+								valResult.AddError(string.Format("Index {0} not pointing to a valid data essence!", index.Index));
+								invalidCt++;
+							}
+						}
+					}
+				}
+			}
 			else
 			{
 				valResult.SetError(string.Format("No system items and/or picture essences found (found {0} index table segments)", m_indexTables.Count));
@@ -253,7 +351,10 @@ namespace Myriadbits.MXF
 				if (invalidCt > 0)
 					valResult.SetError(string.Format("Found {0} index errors! There are {0} indices that are NOT pointing to valid essence data (valid {1})!", invalidCt, validCt));
 				else if (validCt > 0)
-					valResult.SetSuccess(string.Format("Index table is valid! All {0} index entries point to valid essences!", validCt));
+					if (clipWrappedSound)
+						valResult.SetSuccess(string.Format("Clip Wrapping. All {0} index entries point into the essence element, no error found!", validCt));
+					else
+						valResult.SetSuccess(string.Format("Index table is valid! All {0} index entries point to valid essences!", validCt));
 				if (validCt == 0 && invalidCt == 0)
 					valResult.SetError(string.Format("No valid indexes found in this file!"));
 			}
@@ -270,6 +371,8 @@ namespace Myriadbits.MXF
 
 		}
 
+
+		
 
 		/// <summary>
 		/// Check the essence range
@@ -389,6 +492,16 @@ namespace Myriadbits.MXF
 							ee.Indexed = false;
 							this.m_pictureItems.Add(ee);
 						}
+						else if (ee.IsSound)
+						{
+							ee.Indexed = false;
+							this.m_soundItems.Add(ee);
+						}
+						else if (ee.IsData)
+						{
+							ee.Indexed = false;
+							this.m_dataItems.Add(ee);
+						}
 					}
 				}
 			}
@@ -401,6 +514,8 @@ namespace Myriadbits.MXF
 				FindIndexTableAndSystemItems(child);
 			}
 		}
+
+		
 
 	}
 }

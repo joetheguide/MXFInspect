@@ -71,6 +71,7 @@ namespace Myriadbits.MXFInspect
 				sb.AppendLine(string.Format("Filename: {0}", this.m_mainFile.Filename));
 				sb.AppendLine(string.Format("File size: {0:0.00} Mb", (this.m_mainFile.Filesize) / (1024 * 1024)));
 				sb.AppendLine(string.Format("Number of partitions: {0}", this.m_mainFile.PartitionCount));
+				sb.AppendLine(string.Format("Number of Essence Elements: {0}", this.m_mainFile.EssenceElementsCount));
 				if (this.m_mainFile.RIP != null)
 					sb.AppendLine(string.Format("RIP Found (containing {0} entries)", this.m_mainFile.RIPEntryCount));
 				if (this.m_mainFile.FirstSystemItem != null)

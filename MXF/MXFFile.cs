@@ -60,6 +60,8 @@ namespace Myriadbits.MXF
         public List<MXFPartition> Partitions { get; set; }
         public MXFRIP RIP { get; set; }
 
+        public List<MXFMetadataBaseclass> EssenceDescriptors { get; set; }
+
         public List<MXFValidationResult> Results { get { return m_results; } }
         public MXFSystemItem FirstSystemItem { get; set; }
         public MXFSystemItem LastSystemItem { get; set; }
@@ -83,7 +85,19 @@ namespace Myriadbits.MXF
                 return this.RIP?.Children.Count ?? 0;
             }
         }
+        public long EssenceElementsCount
+        {
+            get
+            {
+               long ec = 0;
 
+                for (int n = 0; n < this.Partitions.Count(); n++)
+                {
+                    ec += this.Partitions[n].CountEssences();
+                }
+                return ec;
+            }
+        }
 
         /// <summary>
         /// Create/open an MXF file
@@ -449,7 +463,8 @@ namespace Myriadbits.MXF
                 new MXFValidatorInfo(),
                 new MXFValidatorPartitions(),
                 new MXFValidatorRIP(),
-                new MXFValidatorKeys()
+                new MXFValidatorKeys(),
+                new MXFValidatorEssenceDescriptors()
             };
 
             if (extendedTest)

@@ -21,20 +21,22 @@
 //
 #endregion
 
-namespace Myriadbits.MXF.Identifiers
+using System;
+
+namespace Myriadbits.MXF
 {
-    public class KeyDescription
+    //namespace http://www.smpte-ra.org/reg/2003/2012 	
+    public class MXFJ2KExtendedCapabilities
     {
-        public string Name { get; set; }
+        public UInt32 Pcap { get; set; }
+        public UInt16[] Ccapi { get; set; }
+        public byte ComponentSize { get; set; }
 
-        public string Symbol { get; set; }
-
-        public string Definition { get; set; }
-
-        public string DefiningDocument { get; set; }
-
-        public string IsDeprecated { get; set; }
-
-        public string Notes { get; set; }
+        public override string ToString()
+        {
+            string ccapi_string = "";
+            for (int i = 0; i < Ccapi.Length; i++) ccapi_string += Ccapi[i].ToString() + " ";
+            return string.Format("(Pcap: 0x{0:X} Ccapi[]: {1})", Pcap, ccapi_string);
+        }
     }
 }

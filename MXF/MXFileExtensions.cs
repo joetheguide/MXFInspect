@@ -67,6 +67,26 @@ namespace Myriadbits.MXF
                 .OfType<MXFAES3PCMDescriptor>();
         }
 
+        public static long CountEssenceDescriptors(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFFileDescriptor>().Count();
+        }
+
+        public static long CountPictureEssenceDescriptors(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFGenericPictureEssenceDescriptor>().Count();
+        }
+
+        public static long CountSoundEssenceDescriptors(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFGenericSoundEssenceDescriptor>().Count();
+        }
+
+        public static long CountDataEssenceDescriptors(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFGenericDataEssenceDescriptor>().Count();
+        }
+
         public static bool IsKAGSizeOfAllPartitionsEqual(this MXFFile file, uint size)
         {
             return file.Partitions.Select(p => p.KagSize).All(s => s == size);
@@ -103,9 +123,24 @@ namespace Myriadbits.MXF
             return file.RIP != null;
         }
 
+        public static long CountEssences(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFEssenceElement>().Count();
+        }
+
         public static long CountPictureEssences(this MXFPartition partition)
         {
             return partition.Children.OfType<MXFEssenceElement>().Count(e => e.IsPicture);
+        }
+
+        public static long CountSoundEssences(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFEssenceElement>().Count(e => e.IsSound);
+        }
+
+        public static long CountDataEssences(this MXFPartition partition)
+        {
+            return partition.Children.OfType<MXFEssenceElement>().Count(e => e.IsData);
         }
 
         public static bool IsPartitionDurationBetween(this MXFPartition partition, long min, long max)

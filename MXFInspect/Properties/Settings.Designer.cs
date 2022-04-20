@@ -96,7 +96,7 @@ namespace Myriadbits.MXFInspect.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("OrangeRed")]
+        [global::System.Configuration.DefaultSettingValueAttribute("OliveDrab")]
         public global::System.Drawing.Color Color_IndexTable {
             get {
                 return ((global::System.Drawing.Color)(this["Color_IndexTable"]));
@@ -108,7 +108,7 @@ namespace Myriadbits.MXFInspect.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Crimson")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cyan")]
         public global::System.Drawing.Color Color_RIP {
             get {
                 return ((global::System.Drawing.Color)(this["Color_RIP"]));

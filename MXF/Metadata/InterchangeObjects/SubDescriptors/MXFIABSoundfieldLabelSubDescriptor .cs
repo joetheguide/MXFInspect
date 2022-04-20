@@ -21,20 +21,33 @@
 //
 #endregion
 
-namespace Myriadbits.MXF.Identifiers
+using System;
+using System.ComponentModel;
+using System.Collections.Generic;
+using Myriadbits.MXF.Identifiers;
+using Myriadbits.MXF.Utils;
+
+
+namespace Myriadbits.MXF
 {
-    public class KeyDescription
+    public class MXFIABSoundfieldLabelSubDescriptor : MXFMCALabelSubDescriptor
     {
-        public string Name { get; set; }
+        private const string CATEGORYNAME = "IAB Soundfield Label SubDescriptor ";
+        private const int CATEGORYPOS = 4;
 
-        public string Symbol { get; set; }
+        public MXFIABSoundfieldLabelSubDescriptor(MXFReader reader, MXFKLV headerKLV)
+            : base(reader, headerKLV, "IAB Soundfield Label SubDescriptor")
+        {
+        }
 
-        public string Definition { get; set; }
+        /// <summary>
+        /// Overridden method to process local tags
+        /// </summary>
+        /// <param name="localTag"></param>
+        protected override bool ParseLocalTag(MXFReader reader, MXFLocalTag localTag)
+        {
+            return base.ParseLocalTag(reader, localTag);
+        }
 
-        public string DefiningDocument { get; set; }
-
-        public string IsDeprecated { get; set; }
-
-        public string Notes { get; set; }
     }
 }

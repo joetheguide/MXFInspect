@@ -520,7 +520,8 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ColorDialog colorDialog1;
 		private System.Windows.Forms.PictureBox pbColorEssence;
-		private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pbColorDescriptor;
+        private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.CheckBox chkShowLines;
 		private System.Windows.Forms.PictureBox pbColorIndex;

@@ -37,6 +37,7 @@ namespace Myriadbits.MXF
         Index,
         SystemItem,
         Essence,
+        Descriptor,
         Meta,
         RIP,
         Filler,
